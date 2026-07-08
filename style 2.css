@@ -1,0 +1,208 @@
+/* ===========================================================
+   VỀ RỒI — Reisejournal · Editorial Magazine Design System
+   =========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --indigo: #1E2D3D;
+  --indigo-soft: #2C4054;
+  --paper: #F6F1E7;
+  --paper-2: #EFE8D8;
+  --celadon: #7BA896;
+  --celadon-deep: #5C8674;
+  --clay: #B4442F;
+  --gold: #C9A24B;
+  --ink: #23303C;
+  --muted: #6E7680;
+
+  --display: 'Newsreader', Georgia, serif;
+  --body: 'Inter', system-ui, sans-serif;
+
+  --measure: 68ch;
+  --rule: 1px solid rgba(30, 45, 61, 0.16);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+:focus-visible { outline: 2px solid var(--celadon-deep); outline-offset: 3px; }
+
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+.wrap-narrow { max-width: 720px; margin: 0 auto; padding: 0 28px; }
+
+.eyebrow {
+  font-family: var(--body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--celadon-deep);
+}
+
+/* ---------- Header ---------- */
+header.site-header {
+  position: sticky; top: 0; z-index: 40;
+  background: rgba(246, 241, 231, 0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: var(--rule);
+}
+.header-inner { display: flex; align-items: baseline; justify-content: space-between; padding: 16px 28px; max-width: 1080px; margin: 0 auto; }
+.wordmark { font-family: var(--display); font-style: italic; font-weight: 400; font-size: 1.5rem; color: var(--indigo); letter-spacing: 0.01em; }
+.wordmark .dot { color: var(--clay); }
+nav.main-nav { display: flex; gap: 26px; }
+nav.main-nav a { font-size: 0.82rem; font-weight: 500; letter-spacing: 0.04em; color: var(--muted); padding-bottom: 2px; border-bottom: 1px solid transparent; transition: color 0.2s, border-color 0.2s; }
+nav.main-nav a:hover { color: var(--indigo); border-color: var(--clay); }
+@media (max-width: 620px) { nav.main-nav { gap: 16px; } nav.main-nav a { font-size: 0.75rem; } .wordmark { font-size: 1.3rem; } }
+
+/* ---------- Hero ---------- */
+.hero { padding: 0; }
+.hero-figure {
+  position: relative;
+  height: min(64vh, 560px);
+  margin-top: 12px;
+  background: linear-gradient(155deg, #2C4054 0%, #1E2D3D 55%, #16212D 100%);
+  display: flex; align-items: flex-end;
+  overflow: hidden;
+}
+.hero-figure::after {
+  content: "FOTO — HERO";
+  position: absolute; top: 18px; right: 24px;
+  font-family: var(--body); font-size: 0.62rem; letter-spacing: 0.24em;
+  color: rgba(246,241,231,0.4);
+}
+/* dezente Karst-Silhouette im Hintergrund */
+.hero-figure .karst { position: absolute; bottom: 0; left: 0; width: 100%; opacity: 0.5; }
+.hero-caption {
+  position: relative; z-index: 2;
+  padding: 0 28px 46px;
+  max-width: 1080px; margin: 0 auto; width: 100%;
+  color: var(--paper);
+}
+.hero-caption .eyebrow { color: var(--celadon); }
+.hero-caption h1 {
+  font-family: var(--display); font-weight: 300; font-style: italic;
+  font-size: clamp(3rem, 9vw, 6rem); line-height: 0.98; margin: 10px 0 6px;
+  letter-spacing: -0.01em;
+}
+.hero-caption .place-date { font-size: 0.86rem; letter-spacing: 0.06em; color: rgba(246,241,231,0.75); }
+
+.intro { padding: 54px 0 20px; }
+.intro p {
+  font-family: var(--display); font-weight: 300; font-size: clamp(1.3rem, 3.2vw, 1.75rem);
+  line-height: 1.5; max-width: 40ch; margin: 0 auto; text-align: center; color: var(--indigo);
+}
+.intro .rule-sm { width: 46px; height: 2px; background: var(--clay); margin: 26px auto 0; }
+
+/* ---------- Journal-Index ---------- */
+.journal { padding: 30px 0 40px; }
+.journal-item {
+  display: grid; grid-template-columns: 1.05fr 1fr; gap: 40px; align-items: center;
+  padding: 40px 0; border-top: var(--rule);
+}
+.journal-item:last-child { border-bottom: var(--rule); }
+.ji-figure {
+  position: relative; aspect-ratio: 5/4; overflow: hidden;
+  display: flex; align-items: flex-end; justify-content: flex-start;
+}
+.ji-figure img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.ji-figure .tagcap {
+  position: relative; z-index: 2; margin: 0; width: 100%; padding: 30px 14px 12px;
+  background: linear-gradient(to top, rgba(11,20,27,0.75), transparent);
+  font-family: var(--body); font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(246,241,231,0.9);
+}
+.ji-figure.tone-a { background: linear-gradient(150deg, #34506A, #1E2D3D); }
+.ji-figure.tone-b { background: linear-gradient(150deg, #6E9C8B, #3F6353); }
+.ji-figure.tone-c { background: linear-gradient(150deg, #B4442F, #7C2C1F); }
+.ji-body { position: relative; }
+.ji-num {
+  font-family: var(--display); font-weight: 300; font-size: 3.2rem; line-height: 1;
+  color: var(--paper-2); -webkit-text-stroke: 1px var(--celadon); color: transparent;
+  margin-bottom: 6px;
+}
+.ji-place { font-size: 0.74rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--celadon-deep); }
+.ji-body h2 { font-family: var(--display); font-weight: 400; font-size: 1.9rem; line-height: 1.12; margin: 6px 0 10px; color: var(--indigo); }
+.ji-body p { color: var(--muted); margin: 0 0 16px; max-width: 46ch; }
+.read-link { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--indigo); border-bottom: 1px solid var(--clay); padding-bottom: 2px; }
+.read-link.soon { color: var(--muted); border-color: rgba(110,118,128,0.4); }
+
+.journal-item:nth-child(even) .ji-figure { order: 2; }
+
+@media (max-width: 760px) {
+  .journal-item { grid-template-columns: 1fr; gap: 18px; }
+  .journal-item:nth-child(even) .ji-figure { order: 0; }
+  .ji-num { font-size: 2.6rem; }
+}
+
+/* ---------- Footer ---------- */
+footer.site-footer { background: var(--indigo); color: var(--paper); margin-top: 40px; }
+.footer-inner { max-width: 1080px; margin: 0 auto; padding: 48px 28px; display: grid; grid-template-columns: 1.5fr 1fr; gap: 30px; align-items: start; }
+.footer-inner .wordmark { color: var(--paper); }
+.footer-inner p { color: rgba(246,241,231,0.7); max-width: 40ch; font-size: 0.92rem; }
+.footer-links { display: flex; flex-direction: column; gap: 8px; }
+.footer-links a { font-size: 0.86rem; color: rgba(246,241,231,0.75); width: fit-content; border-bottom: 1px solid transparent; }
+.footer-links a:hover { color: var(--paper); border-color: var(--celadon); }
+.footer-bottom { border-top: 1px solid rgba(246,241,231,0.14); text-align: center; padding: 18px; font-size: 0.76rem; color: rgba(246,241,231,0.5); letter-spacing: 0.04em; }
+@media (max-width: 620px) { .footer-inner { grid-template-columns: 1fr; } }
+
+/* ---------- Tagesseite ---------- */
+.post-hero { padding: 46px 0 20px; text-align: center; }
+.post-hero h1 { font-family: var(--display); font-weight: 300; font-style: italic; font-size: clamp(2.2rem, 6vw, 3.6rem); line-height: 1.02; margin: 12px 0 12px; color: var(--indigo); }
+.post-hero .place-date { font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+
+.figure-cap { font-size: 0.78rem; color: var(--muted); padding: 10px 2px 0; }
+.lead-figure {
+  position: relative; aspect-ratio: 16/9; margin: 20px 0 8px; overflow: hidden;
+  background: var(--indigo); display: flex; align-items: flex-end;
+}
+.lead-figure img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.figure-cap.on-dark {
+  position: relative; z-index: 2; width: 100%; margin: 0; padding: 22px 14px 12px;
+  background: linear-gradient(to top, rgba(11,20,27,0.78), transparent);
+  color: rgba(246,241,231,0.9);
+}
+
+article.post-body { padding: 26px 0 10px; }
+article.post-body p { margin: 0 0 22px; }
+article.post-body p:first-of-type::first-letter {
+  font-family: var(--display); font-weight: 400; font-size: 3.4rem; float: left; line-height: 0.82; margin: 8px 10px 0 0; color: var(--clay);
+}
+
+blockquote.pull {
+  font-family: var(--display); font-weight: 300; font-style: italic; font-size: 1.6rem; line-height: 1.35;
+  text-align: center; color: var(--indigo); max-width: 26ch; margin: 40px auto; padding: 24px 0;
+  border-top: var(--rule); border-bottom: var(--rule);
+}
+
+.gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 30px 0; }
+.gallery .g-figure { position: relative; aspect-ratio: 4/5; overflow: hidden; display: flex; align-items: flex-end; background: var(--indigo); }
+.gallery .g-figure img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.gallery .g-figure span {
+  position: relative; z-index: 2; width: 100%; margin: 0; padding: 14px 12px 10px;
+  background: linear-gradient(to top, rgba(11,20,27,0.75), transparent);
+  font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(246,241,231,0.85);
+}
+@media (max-width: 560px) { .gallery { grid-template-columns: 1fr; } }
+
+.video-frame { margin: 30px 0 6px; background: #000; aspect-ratio: 16/9; }
+.video-frame video, .video-frame iframe { width: 100%; height: 100%; display: block; border: none; }
+
+.day-nav { display: flex; justify-content: space-between; align-items: center; margin: 46px 0 10px; padding-top: 22px; border-top: var(--rule); }
+.day-nav a { font-size: 0.8rem; letter-spacing: 0.06em; }
+.day-nav .to-index { color: var(--clay); font-weight: 600; }
+.day-nav .nxt { text-align: right; }
+.day-nav .nxt .place { display: block; font-family: var(--display); font-style: italic; font-size: 1.1rem; color: var(--indigo); }
