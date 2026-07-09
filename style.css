@@ -260,3 +260,72 @@ blockquote.pull {
 .water-scene .boat3 { right: 15%; bottom: 32px; width: 54px; animation: boat-bob 5.5s ease-in-out infinite; animation-delay: 0.4s; }
 @keyframes boat-bob { 0%, 100% { transform: translateY(0) rotate(-2.5deg); } 50% { transform: translateY(-9px) rotate(2.5deg); } }
 @media (max-width: 560px) { .water-scene .boat2 { display: none; } }
+
+/* ===========================================================
+   FOOTER-MEMORY — Foto-Memory-Spiel im Footer
+   =========================================================== */
+.footer-memory { max-width: 640px; margin: 0 auto; padding: 52px 24px 10px; text-align: center; }
+.fm-eyebrow { font-family: var(--body); font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin: 0 0 8px; }
+.footer-memory h2 { font-family: var(--display); font-weight: 500; font-style: italic; font-size: clamp(1.5rem, 5vw, 2.1rem); color: var(--paper); margin: 0 0 8px; }
+.fm-sub { font-family: var(--body); font-size: 0.92rem; color: rgba(247,240,225,0.72); margin: 0 0 22px; }
+
+.fm-stats { display: flex; justify-content: center; gap: 26px; margin-bottom: 18px; font-family: var(--body); font-size: 0.82rem; color: rgba(247,240,225,0.85); }
+.fm-stats span { display: block; font-family: var(--display); font-size: 1.3rem; color: var(--paper); font-weight: 500; }
+.fm-stats small { display: block; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.66rem; color: rgba(247,240,225,0.55); margin-top: 2px; }
+
+.fm-board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 9px;
+  perspective: 900px;
+  margin-bottom: 20px;
+}
+@media (max-width: 380px) { .fm-board { gap: 7px; } }
+
+.fm-card { aspect-ratio: 1 / 1; cursor: pointer; }
+.fm-card-inner {
+  position: relative; width: 100%; height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(.2,.8,.2,1);
+  border-radius: 10px;
+}
+.fm-card.flipped .fm-card-inner,
+.fm-card.matched .fm-card-inner { transform: rotateY(180deg); }
+
+.fm-face {
+  position: absolute; inset: 0;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.fm-face-back {
+  background: linear-gradient(155deg, var(--indigo-soft), var(--indigo) 70%);
+  border: 1px solid rgba(247,240,225,0.16);
+}
+.fm-face-back::after {
+  content: "越"; font-family: var(--display); font-style: italic; font-size: 1.3rem;
+  color: rgba(214,169,60,0.55);
+}
+.fm-face-front {
+  transform: rotateY(180deg);
+  border: 1px solid rgba(247,240,225,0.25);
+}
+.fm-face-front img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.fm-card.matched .fm-face-front { border-color: var(--celadon); box-shadow: 0 0 0 2px var(--celadon) inset; }
+.fm-card.matched { animation: fm-pop 0.4s ease; }
+@keyframes fm-pop { 0% { transform: scale(1); } 40% { transform: scale(1.06); } 100% { transform: scale(1); } }
+
+.fm-win {
+  font-family: var(--body); font-size: 0.9rem; color: var(--celadon);
+  min-height: 1.4em; margin-bottom: 16px; opacity: 0; transition: opacity 0.4s;
+}
+.fm-win.show { opacity: 1; }
+
+.fm-restart {
+  font-family: var(--body); font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--paper); background: transparent; border: 1px solid rgba(247,240,225,0.35);
+  border-radius: 999px; padding: 9px 20px; cursor: pointer; transition: border-color 0.2s, color 0.2s;
+}
+.fm-restart:hover { border-color: var(--gold); color: var(--gold); }

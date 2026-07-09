@@ -70,20 +70,23 @@
 </div>
 
 <footer class="site-footer" id="footer">
-  <div class="footer-inner">
-    <div>
-      <a class="wordmark" href="index.html">Về rồi<span style="color:var(--gold)">.</span></a>
-      <p>Ein Reisejournal durch Vietnam — Geschichten, Fotografien und kurze Filme, Tag für Tag.</p>
+  <div class="footer-memory">
+    <a class="wordmark" href="index.html" style="display:inline-block;margin-bottom:16px;">Về rồi<span style="color:var(--gold)">.</span></a>
+    <p class="fm-eyebrow">Kleine Pause</p>
+    <h2>Foto-Memory</h2>
+    <p class="fm-sub">Finde die Paare aus unserer Reise.</p>
+    <div class="fm-stats">
+      <div><span id="fm-moves">0</span><small>Züge</small></div>
+      <div><span id="fm-best">—</span><small>Bestwert</small></div>
     </div>
-    <div class="footer-links">
-      <a href="index.html#journal">Das Journal</a>
-      <a href="#">Über die Reise</a>
-      <a href="#">Kontakt</a>
-    </div>
+    <div class="fm-board" id="fm-board"></div>
+    <p class="fm-win" id="fm-win"></p>
+    <button class="fm-restart" id="fm-restart" type="button">Neu mischen</button>
   </div>
   <div class="footer-bottom">Về rồi — wird laufend fortgesetzt · 2026</div>
 </footer>
 
 <script src="main.js"></script>
+<script src="memory.js"></script>
 </body>
 </html>
